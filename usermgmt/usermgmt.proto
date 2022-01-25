@@ -1,0 +1,27 @@
+syntax='proto3';
+
+package usermgmt;
+
+option go_package = "example.com/go-usermgmt-grpc;go_usermgmt_grpc";
+
+service ParkingLot {
+  rpc ParkYourCar(NewCar) returns (SlotNumber) {}
+  rpc UnparkYourCar(Id) returns (CarList) {}
+  rpc GetParkedCars(GetAllCars) returns (CarList) {}
+}
+message NewCar {
+  int32 id = 1;
+  string name = 2;
+}
+message SlotNumber {
+  int32 slot = 1;
+}
+message Id {
+  int32 id = 1;
+}
+message GetAllCars {
+
+}
+message CarList {
+  repeated NewCar cars = 1;
+}
